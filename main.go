@@ -7,11 +7,13 @@ import (
 )
 
 func main() {
+	http.HandleFunc("/api/v1/run/compilers", handler.HandleGetCompilers)
 	http.HandleFunc("/api/v1/run", handler.HandleRun)
+
+	fmt.Println("server starting on 8010")
 
 	// Run the server on port 8010
 	err := http.ListenAndServe(":8010", nil)
-	fmt.Println("server started on 8010")
 	if err != nil {
 		fmt.Println("Error starting the server:", err)
 	}
